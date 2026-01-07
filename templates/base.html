@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}D-Mart Smart Inventory System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🛒 D-Mart AI</h1>
+                    <p>Smart Inventory Management</p>
+                </div>
+                <div class="header-actions">
+                    <!-- reserved for user info / quick actions -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Professional Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <span class="nav-title">📊 D-Mart Inventory Pro</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                        <span class="nav-icon">📈</span> Dashboard
+                    </a></li>
+                    <li><a href="/analytics" class="nav-link {% if request.path == '/analytics' %}active{% endif %}">
+                        <span class="nav-icon">📊</span> Analytics
+                    </a></li>
+                    <li><a href="/settings" class="nav-link {% if request.path == '/settings' %}active{% endif %}">
+                        <span class="nav-icon">⚙️</span> Settings
+                    </a></li>
+                    <li><a href="/logout" class="nav-link logout-link">
+                        <span class="nav-icon">🚪</span> Logout
+                    </a></li>
+                </ul>
+                <div class="nav-stats">
+                    <span class="nav-stat-item" id="nav-stat-products">📦 Products</span>
+                    <span class="nav-stat-item" id="nav-stat-analyses">📈 Analyses</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 D-Mart Smart Inventory Management System. Powered by AI.</p>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+    
+    <script>
+        // Update navigation stats
+        async function updateNavStats() {
+            try {
+                const response = await fetch('/api/dashboard-stats');
+                const stats = await response.json();
+                document.getElementById('nav-stat-products').textContent = `📦 ${stats.total_products} Products`;
+                document.getElementById('nav-stat-analyses').textContent = `📈 ${stats.total_analyses} Analyses`;
+            } catch (error) {
+                console.error('Error updating nav stats:', error);
+            }
+        }
+        
+        // Update stats on page load
+        document.addEventListener('DOMContentLoaded', updateNavStats);
+            // Dynamic layout adjustment (robust when header may be missing)
+            function adjustMainContentPadding() {
+                const headerEl = document.querySelector('.header');
+                const navbarEl = document.querySelector('.navbar');
+                const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+                const navbarHeight = navbarEl ? navbarEl.offsetHeight : 0;
+                const mainContent = document.querySelector('.main-content');
+                if (mainContent) {
+                    mainContent.style.paddingTop = `${headerHeight + navbarHeight}px`;
+                }
+            }
+
+            // Adjust padding on load and on resize
+            document.addEventListener('DOMContentLoaded', adjustMainContentPadding);
+            window.addEventListener('resize', adjustMainContentPadding);
+    </script>
+</body>
+</html>

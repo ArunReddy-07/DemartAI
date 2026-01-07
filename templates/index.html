@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - D-Mart Smart Inventory System{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <h3 id="totalProducts">200</h3>
+                        <p>Total Products</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-info">
+                        <h3 id="lowStock">0</h3>
+                        <p>Low Stock Alerts</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <h3 id="highDemand">0</h3>
+                        <p>High Demand Items</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-info">
+                        <h3 id="avgPrice">₹0</h3>
+                        <p>Avg Product Price</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="main-grid">
+                <!-- Left Panel - Form -->
+                <div class="card">
+                    <h2 class="card-title">Add Product Analysis</h2>
+                    <form id="productForm" class="product-form">
+                        <div class="form-group">
+                            <label for="productName">Select Product</label>
+                            <select id="productName" required>
+                                <option value="">Choose a product...</option>
+                                {% for product in products %}
+                                <option value="{{ product.name }}">{{ product.name }} - {{ product.category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="season">Season</label>
+                            <select id="season" required>
+                                <option value="">Select season...</option>
+                                <option value="Summer">☀️ Summer</option>
+                                <option value="Winter">❄️ Winter</option>
+                                <option value="Monsoon">🌧️ Monsoon</option>
+                                <option value="Regular">📅 Regular</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">Current Stock</label>
+                            <input type="number" id="stock" placeholder="Enter current stock" required min="0">
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            <span>🔮 Analyze & Predict</span>
+                        </button>
+                    </form>
+
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <h3>Quick Insights</h3>
+                        <div id="quickInsights" class="insights-list">
+                            <p class="insight-item">Select a product to see insights</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Results -->
+                <div class="card">
+                    <h2 class="card-title">Inventory Analysis Results</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Season</th>
+                                    <th>Stock</th>
+                                    <th>Demand</th>
+                                    <th>Decision</th>
+                                    <th>Price</th>
+                                    <th>Offer</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableData">
+                                <tr>
+                                    <td colspan="7" class="empty-state">
+                                        <div class="empty-icon">📊</div>
+                                        <p>No analysis yet. Start by adding a product above.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header" id="chatbotHeader">
+            <h3>🤖 AI Assistant</h3>
+            <button class="chatbot-toggle" id="chatbotToggle">−</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="bot-message">
+                    <p>👋 Hi! I'm your D-Mart AI assistant. Ask me about inventory management, seasonal trends, or product recommendations!</p>
+                </div>
+            </div>
+            <form class="chat-input-form" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Ask me anything..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

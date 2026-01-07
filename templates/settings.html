@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="settings-container">
+    <div class="settings-header">
+        <h1>⚙️ Settings</h1>
+        <p>Manage your D-Mart AI account and preferences</p>
+    </div>
+
+    <div class="settings-grid">
+        <!-- Profile Section -->
+        <div class="settings-card profile-card">
+            <div class="card-header">
+                <h3>👤 Profile Information</h3>
+            </div>
+            <div class="card-content">
+                <div class="profile-info">
+                    <div class="info-item">
+                        <label>Email Address</label>
+                        <p id="email-display">{{ session.get('email', 'N/A') }}</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Username</label>
+                        <p id="username-display">{{ session.get('username', 'User') }}</p>
+                    </div>
+                    <div class="info-item">
+                        <label>Account Status</label>
+                        <p><span class="status-badge active">Active</span></p>
+                    </div>
+                </div>
+                <button class="settings-btn edit-btn" onclick="toggleEditProfile()">
+                    ✏️ Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Preferences Section -->
+        <div class="settings-card">
+            <div class="card-header">
+                <h3>🎨 Preferences</h3>
+            </div>
+            <div class="card-content">
+                <div class="preference-item">
+                    <label for="theme-toggle">Dark Mode</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="theme-toggle" class="toggle-input">
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="preference-item">
+                    <label for="notifications-toggle">Email Notifications</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="notifications-toggle" class="toggle-input" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="preference-item">
+                    <label for="analytics-toggle">Show Analytics Dashboard</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="analytics-toggle" class="toggle-input" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Section -->
+        <div class="settings-card">
+            <div class="card-header">
+                <h3>🔐 Privacy & Security</h3>
+            </div>
+            <div class="card-content">
+                <div class="privacy-item">
+                    <h4>Password</h4>
+                    <p>Update your password regularly to keep your account secure</p>
+                    <button class="settings-btn secondary-btn" onclick="toggleChangePassword()">
+                        🔑 Change Password
+                    </button>
+                </div>
+                <div class="privacy-item">
+                    <h4>Two-Factor Authentication</h4>
+                    <p>Add an extra layer of security to your account</p>
+                    <button class="settings-btn secondary-btn">
+                        🔒 Enable 2FA
+                    </button>
+                </div>
+                <div class="privacy-item">
+                    <h4>Active Sessions</h4>
+                    <p>Manage your active login sessions across devices</p>
+                    <button class="settings-btn secondary-btn" onclick="showActiveSessions()">
+                        📱 View Sessions
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-card">
+            <div class="card-header">
+                <h3>🔔 Notifications</h3>
+            </div>
+            <div class="card-content">
+                <div class="notification-item">
+                    <label for="inventory-alert">Inventory Alerts</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="inventory-alert" class="toggle-input" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <label for="sales-report">Weekly Sales Reports</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="sales-report" class="toggle-input" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <label for="product-updates">Product Updates</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="product-updates" class="toggle-input">
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support & Help -->
+        <div class="settings-card">
+            <div class="card-header">
+                <h3>❓ Help & Support</h3>
+            </div>
+            <div class="card-content">
+                <div class="help-item">
+                    <a href="#" class="help-link">📚 Documentation & FAQs</a>
+                    <a href="#" class="help-link">💬 Contact Support</a>
+                    <a href="#" class="help-link">🐛 Report Bug</a>
+                    <a href="#" class="help-link">💡 Suggest Feature</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-card danger-card">
+            <div class="card-header">
+                <h3>⚠️ Danger Zone</h3>
+            </div>
+            <div class="card-content">
+                <div class="danger-item">
+                    <h4>Logout</h4>
+                    <p>Sign out from your current session</p>
+                    <a href="/logout" class="settings-btn danger-btn">
+                        🚪 Logout
+                    </a>
+                </div>
+                <div class="danger-item">
+                    <h4>Delete Account</h4>
+                    <p>Permanently delete your account and all associated data</p>
+                    <button class="settings-btn danger-btn" onclick="confirmDeleteAccount()">
+                        🗑️ Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit Profile</h2>
+            <span class="close-btn" onclick="toggleEditProfile()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="edit-username">Username</label>
+                    <input type="text" id="edit-username" name="username" value="{{ session.get('username', '') }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" name="email" value="{{ session.get('email', '') }}" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-save">💾 Save Changes</button>
+                    <button type="button" class="btn-cancel" onclick="toggleEditProfile()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="changePasswordModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Change Password</h2>
+            <span class="close-btn" onclick="toggleChangePassword()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" name="current_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm_password" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-save">🔑 Update Password</button>
+                    <button type="button" class="btn-cancel" onclick="toggleChangePassword()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Active Sessions Modal -->
+<div id="sessionsModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Active Sessions</h2>
+            <span class="close-btn" onclick="showActiveSessions()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="sessions-list">
+                <div class="session-item">
+                    <div class="session-info">
+                        <h4>Current Session</h4>
+                        <p>🖥️ Windows • Chrome</p>
+                        <p class="session-time">Last active: Just now</p>
+                    </div>
+                    <span class="badge current-badge">Current</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Toggle Edit Profile Modal
+function toggleEditProfile() {
+    const modal = document.getElementById('editProfileModal');
+    modal.classList.toggle('hidden');
+}
+
+// Toggle Change Password Modal
+function toggleChangePassword() {
+    const modal = document.getElementById('changePasswordModal');
+    modal.classList.toggle('hidden');
+}
+
+// Show Active Sessions Modal
+function showActiveSessions() {
+    const modal = document.getElementById('sessionsModal');
+    modal.classList.toggle('hidden');
+}
+
+// Confirm Delete Account
+function confirmDeleteAccount() {
+    if (confirm('⚠️ Are you sure? This action cannot be undone. All your data will be permanently deleted.')) {
+        // Handle account deletion
+        alert('Account deletion feature coming soon!');
+    }
+}
+
+// Theme Toggle
+document.getElementById('theme-toggle').addEventListener('change', function() {
+    if (this.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Load saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.getElementById('theme-toggle').checked = true;
+    document.body.classList.add('dark-mode');
+}
+
+// Edit Profile Form Submission
+document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    
+    fetch('/api/update-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            username: formData.get('username'),
+            email: formData.get('email')
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('✅ Profile updated successfully!');
+            document.getElementById('username-display').textContent = data.username;
+            document.getElementById('email-display').textContent = data.email;
+            toggleEditProfile();
+            location.reload();
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+// Close modals when clicking outside
+window.addEventListener('click', function(e) {
+    const editModal = document.getElementById('editProfileModal');
+    const passModal = document.getElementById('changePasswordModal');
+    const sessionsModal = document.getElementById('sessionsModal');
+    
+    if (e.target === editModal) editModal.classList.add('hidden');
+    if (e.target === passModal) passModal.classList.add('hidden');
+    if (e.target === sessionsModal) sessionsModal.classList.add('hidden');
+});
+</script>
+{% endblock %}

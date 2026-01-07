@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - D-Mart Smart Inventory System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <!-- Left Side - Branding -->
+        <div class="login-brand-section">
+            <div class="brand-content">
+                <div class="brand-logo">🛒</div>
+                <h1>D-Mart AI</h1>
+                <p class="brand-subtitle">Smart Inventory Management System</p>
+                <div class="brand-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span>Real-time Analytics</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <span>AI-Powered Insights</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📈</span>
+                        <span>Inventory Optimization</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <span>Instant Predictions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="login-form-section">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your account to continue</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="you@example.com" 
+                            required
+                        >
+                        <div class="input-icon">✉️</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password" 
+                            required
+                        >
+                        <div class="input-icon">🔒</div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>Sign In</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="/signup" class="signup-link">Create one</a></p>
+                </div>
+
+                <!-- Demo Credentials -->
+                <div class="demo-section">
+                    <p class="demo-label">Demo Credentials:</p>
+                    <p class="demo-cred"><strong>Email:</strong> demo@dmart.com</p>
+                    <p class="demo-cred"><strong>Password:</strong> demo123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Show success message
+                    showNotification('Login successful! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1500);
+                } else {
+                    showNotification(result.error || 'Login failed', 'error');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showNotification('An error occurred. Please try again.', 'error');
+            }
+        });
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background: ${type === 'success' ? '#06D6A0' : '#EF476F'};
+                color: white;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                font-weight: 500;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
