@@ -1,0 +1,1602 @@
+[
+  {
+    "id": 1,
+    "name": "Basmati Rice (5kg)",
+    "category": "Groceries",
+    "current_price": 425,
+    "historical_price_avg": 380,
+    "unit": "pack"
+  },
+  {
+    "id": 2,
+    "name": "Wheat Flour (10kg)",
+    "category": "Groceries",
+    "current_price": 350,
+    "historical_price_avg": 320,
+    "unit": "pack"
+  },
+  {
+    "id": 3,
+    "name": "Sugar (1kg)",
+    "category": "Groceries",
+    "current_price": 45,
+    "historical_price_avg": 42,
+    "unit": "kg"
+  },
+  {
+    "id": 4,
+    "name": "Sunflower Oil (1L)",
+    "category": "Groceries",
+    "current_price": 185,
+    "historical_price_avg": 165,
+    "unit": "ltr"
+  },
+  {
+    "id": 5,
+    "name": "Toor Dal (1kg)",
+    "category": "Groceries",
+    "current_price": 135,
+    "historical_price_avg": 120,
+    "unit": "kg"
+  },
+  {
+    "id": 6,
+    "name": "Milk (1L)",
+    "category": "Dairy",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "ltr"
+  },
+  {
+    "id": 7,
+    "name": "Curd (500g)",
+    "category": "Dairy",
+    "current_price": 75,
+    "historical_price_avg": 68,
+    "unit": "pack"
+  },
+  {
+    "id": 8,
+    "name": "Paneer (200g)",
+    "category": "Dairy",
+    "current_price": 90,
+    "historical_price_avg": 80,
+    "unit": "pack"
+  },
+  {
+    "id": 9,
+    "name": "Butter (500g)",
+    "category": "Dairy",
+    "current_price": 230,
+    "historical_price_avg": 210,
+    "unit": "pack"
+  },
+  {
+    "id": 10,
+    "name": "Cheese Slices (200g)",
+    "category": "Dairy",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 11,
+    "name": "Coca Cola (2L)",
+    "category": "Beverages",
+    "current_price": 90,
+    "historical_price_avg": 85,
+    "unit": "bottle"
+  },
+  {
+    "id": 12,
+    "name": "Pepsi (2L)",
+    "category": "Beverages",
+    "current_price": 88,
+    "historical_price_avg": 83,
+    "unit": "bottle"
+  },
+  {
+    "id": 13,
+    "name": "Mango Juice (1L)",
+    "category": "Beverages",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 14,
+    "name": "Mineral Water (1L)",
+    "category": "Beverages",
+    "current_price": 20,
+    "historical_price_avg": 18,
+    "unit": "bottle"
+  },
+  {
+    "id": 15,
+    "name": "Tea Powder (250g)",
+    "category": "Beverages",
+    "current_price": 90,
+    "historical_price_avg": 82,
+    "unit": "pack"
+  },
+  {
+    "id": 16,
+    "name": "Coffee Powder (200g)",
+    "category": "Beverages",
+    "current_price": 280,
+    "historical_price_avg": 260,
+    "unit": "pack"
+  },
+  {
+    "id": 17,
+    "name": "Lays Chips (52g)",
+    "category": "Snacks",
+    "current_price": 20,
+    "historical_price_avg": 18,
+    "unit": "pack"
+  },
+  {
+    "id": 18,
+    "name": "Kurkure (90g)",
+    "category": "Snacks",
+    "current_price": 20,
+    "historical_price_avg": 18,
+    "unit": "pack"
+  },
+  {
+    "id": 19,
+    "name": "Parle-G Biscuits (200g)",
+    "category": "Snacks",
+    "current_price": 28,
+    "historical_price_avg": 25,
+    "unit": "pack"
+  },
+  {
+    "id": 20,
+    "name": "Britannia Marie (200g)",
+    "category": "Snacks",
+    "current_price": 30,
+    "historical_price_avg": 27,
+    "unit": "pack"
+  },
+  {
+    "id": 21,
+    "name": "Haldiram Bhujia (400g)",
+    "category": "Snacks",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 22,
+    "name": "Namkeen Mix (500g)",
+    "category": "Snacks",
+    "current_price": 120,
+    "historical_price_avg": 110,
+    "unit": "pack"
+  },
+  {
+    "id": 23,
+    "name": "Chocolate Bar (40g)",
+    "category": "Snacks",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "piece"
+  },
+  {
+    "id": 24,
+    "name": "Shampoo (200ml)",
+    "category": "Personal Care",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "bottle"
+  },
+  {
+    "id": 25,
+    "name": "Soap (125g)",
+    "category": "Personal Care",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "piece"
+  },
+  {
+    "id": 26,
+    "name": "Toothpaste (200g)",
+    "category": "Personal Care",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "tube"
+  },
+  {
+    "id": 27,
+    "name": "Face Wash (100g)",
+    "category": "Personal Care",
+    "current_price": 175,
+    "historical_price_avg": 160,
+    "unit": "tube"
+  },
+  {
+    "id": 28,
+    "name": "Body Lotion (200ml)",
+    "category": "Personal Care",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "bottle"
+  },
+  {
+    "id": 29,
+    "name": "Detergent Powder (1kg)",
+    "category": "Household",
+    "current_price": 135,
+    "historical_price_avg": 125,
+    "unit": "pack"
+  },
+  {
+    "id": 30,
+    "name": "Dish Wash Liquid (500ml)",
+    "category": "Household",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "bottle"
+  },
+  {
+    "id": 31,
+    "name": "Floor Cleaner (1L)",
+    "category": "Household",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "bottle"
+  },
+  {
+    "id": 32,
+    "name": "Toilet Cleaner (500ml)",
+    "category": "Household",
+    "current_price": 75,
+    "historical_price_avg": 68,
+    "unit": "bottle"
+  },
+  {
+    "id": 33,
+    "name": "Ice Cream (500ml)",
+    "category": "Frozen Foods",
+    "current_price": 155,
+    "historical_price_avg": 140,
+    "unit": "tub"
+  },
+  {
+    "id": 34,
+    "name": "Frozen Peas (500g)",
+    "category": "Frozen Foods",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "pack"
+  },
+  {
+    "id": 35,
+    "name": "Bread (400g)",
+    "category": "Bakery",
+    "current_price": 32,
+    "historical_price_avg": 28,
+    "unit": "loaf"
+  },
+  {
+    "id": 36,
+    "name": "Cake Rusk (400g)",
+    "category": "Bakery",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "pack"
+  },
+  {
+    "id": 37,
+    "name": "Tomatoes (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "kg"
+  },
+  {
+    "id": 38,
+    "name": "Onions (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "kg"
+  },
+  {
+    "id": 39,
+    "name": "Potatoes (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 28,
+    "historical_price_avg": 25,
+    "unit": "kg"
+  },
+  {
+    "id": 40,
+    "name": "Apples (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "kg"
+  },
+  {
+    "id": 41,
+    "name": "Bananas (dozen)",
+    "category": "Fruits & Vegetables",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "dozen"
+  },
+  {
+    "id": 42,
+    "name": "Chicken Breast (1kg)",
+    "category": "Meat & Fish",
+    "current_price": 295,
+    "historical_price_avg": 270,
+    "unit": "kg"
+  },
+  {
+    "id": 43,
+    "name": "Fish Fillet (1kg)",
+    "category": "Meat & Fish",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "kg"
+  },
+  {
+    "id": 44,
+    "name": "Eggs (dozen)",
+    "category": "Dairy",
+    "current_price": 75,
+    "historical_price_avg": 68,
+    "unit": "dozen"
+  },
+  {
+    "id": 45,
+    "name": "Masoor Dal (1kg)",
+    "category": "Groceries",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "kg"
+  },
+  {
+    "id": 46,
+    "name": "Chana Dal (1kg)",
+    "category": "Groceries",
+    "current_price": 115,
+    "historical_price_avg": 105,
+    "unit": "kg"
+  },
+  {
+    "id": 47,
+    "name": "Moong Dal (1kg)",
+    "category": "Groceries",
+    "current_price": 135,
+    "historical_price_avg": 125,
+    "unit": "kg"
+  },
+  {
+    "id": 48,
+    "name": "Urad Dal (1kg)",
+    "category": "Groceries",
+    "current_price": 145,
+    "historical_price_avg": 135,
+    "unit": "kg"
+  },
+  {
+    "id": 49,
+    "name": "Salt (1kg)",
+    "category": "Groceries",
+    "current_price": 22,
+    "historical_price_avg": 20,
+    "unit": "kg"
+  },
+  {
+    "id": 50,
+    "name": "Turmeric Powder (200g)",
+    "category": "Groceries",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 51,
+    "name": "Chilli Powder (200g)",
+    "category": "Groceries",
+    "current_price": 75,
+    "historical_price_avg": 68,
+    "unit": "pack"
+  },
+  {
+    "id": 52,
+    "name": "Coriander Powder (200g)",
+    "category": "Groceries",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "pack"
+  },
+  {
+    "id": 53,
+    "name": "Garam Masala (100g)",
+    "category": "Groceries",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "pack"
+  },
+  {
+    "id": 54,
+    "name": "Pasta (500g)",
+    "category": "Groceries",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 55,
+    "name": "Noodles (400g)",
+    "category": "Groceries",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 56,
+    "name": "Poha (500g)",
+    "category": "Groceries",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "pack"
+  },
+  {
+    "id": 57,
+    "name": "Upma Rava (500g)",
+    "category": "Groceries",
+    "current_price": 38,
+    "historical_price_avg": 35,
+    "unit": "pack"
+  },
+  {
+    "id": 58,
+    "name": "Besan Flour (1kg)",
+    "category": "Groceries",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "kg"
+  },
+  {
+    "id": 59,
+    "name": "Maida Flour (1kg)",
+    "category": "Groceries",
+    "current_price": 42,
+    "historical_price_avg": 38,
+    "unit": "kg"
+  },
+  {
+    "id": 60,
+    "name": "Sooji (500g)",
+    "category": "Groceries",
+    "current_price": 35,
+    "historical_price_avg": 32,
+    "unit": "pack"
+  },
+  {
+    "id": 61,
+    "name": "Ketchup (1kg)",
+    "category": "Groceries",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "bottle"
+  },
+  {
+    "id": 62,
+    "name": "Mayonnaise (500g)",
+    "category": "Groceries",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "jar"
+  },
+  {
+    "id": 63,
+    "name": "Soy Sauce (500ml)",
+    "category": "Groceries",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "bottle"
+  },
+  {
+    "id": 64,
+    "name": "Vinegar (500ml)",
+    "category": "Groceries",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "bottle"
+  },
+  {
+    "id": 65,
+    "name": "Honey (500g)",
+    "category": "Groceries",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "bottle"
+  },
+  {
+    "id": 66,
+    "name": "Jam (500g)",
+    "category": "Groceries",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "jar"
+  },
+  {
+    "id": 67,
+    "name": "Peanut Butter (500g)",
+    "category": "Groceries",
+    "current_price": 295,
+    "historical_price_avg": 270,
+    "unit": "jar"
+  },
+  {
+    "id": 68,
+    "name": "Pickle (500g)",
+    "category": "Groceries",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "jar"
+  },
+  {
+    "id": 69,
+    "name": "Papad (200g)",
+    "category": "Groceries",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "pack"
+  },
+  {
+    "id": 70,
+    "name": "Green Tea (100 bags)",
+    "category": "Beverages",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "box"
+  },
+  {
+    "id": 71,
+    "name": "Energy Drink (250ml)",
+    "category": "Beverages",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "can"
+  },
+  {
+    "id": 72,
+    "name": "Coconut Water (500ml)",
+    "category": "Beverages",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "pack"
+  },
+  {
+    "id": 73,
+    "name": "Instant Coffee (50g)",
+    "category": "Beverages",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "jar"
+  },
+  {
+    "id": 74,
+    "name": "Hot Chocolate Mix (200g)",
+    "category": "Beverages",
+    "current_price": 235,
+    "historical_price_avg": 215,
+    "unit": "pack"
+  },
+  {
+    "id": 75,
+    "name": "Protein Bar",
+    "category": "Snacks",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "piece"
+  },
+  {
+    "id": 76,
+    "name": "Dry Fruits Mix (250g)",
+    "category": "Snacks",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "pack"
+  },
+  {
+    "id": 77,
+    "name": "Cashews (250g)",
+    "category": "Snacks",
+    "current_price": 485,
+    "historical_price_avg": 440,
+    "unit": "pack"
+  },
+  {
+    "id": 78,
+    "name": "Almonds (250g)",
+    "category": "Snacks",
+    "current_price": 425,
+    "historical_price_avg": 390,
+    "unit": "pack"
+  },
+  {
+    "id": 79,
+    "name": "Raisins (250g)",
+    "category": "Snacks",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "pack"
+  },
+  {
+    "id": 80,
+    "name": "Popcorn (200g)",
+    "category": "Snacks",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "pack"
+  },
+  {
+    "id": 81,
+    "name": "Nachos (150g)",
+    "category": "Snacks",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "pack"
+  },
+  {
+    "id": 82,
+    "name": "Cookies (200g)",
+    "category": "Snacks",
+    "current_price": 75,
+    "historical_price_avg": 68,
+    "unit": "pack"
+  },
+  {
+    "id": 83,
+    "name": "Wafers (150g)",
+    "category": "Snacks",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 84,
+    "name": "Candies (200g)",
+    "category": "Snacks",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 85,
+    "name": "Chewing Gum (20 pieces)",
+    "category": "Snacks",
+    "current_price": 35,
+    "historical_price_avg": 32,
+    "unit": "pack"
+  },
+  {
+    "id": 86,
+    "name": "Hair Oil (200ml)",
+    "category": "Personal Care",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "bottle"
+  },
+  {
+    "id": 87,
+    "name": "Conditioner (200ml)",
+    "category": "Personal Care",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "bottle"
+  },
+  {
+    "id": 88,
+    "name": "Face Cream (50g)",
+    "category": "Personal Care",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "jar"
+  },
+  {
+    "id": 89,
+    "name": "Sunscreen (100ml)",
+    "category": "Personal Care",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "tube"
+  },
+  {
+    "id": 90,
+    "name": "Deodorant (150ml)",
+    "category": "Personal Care",
+    "current_price": 225,
+    "historical_price_avg": 205,
+    "unit": "can"
+  },
+  {
+    "id": 91,
+    "name": "Body Wash (500ml)",
+    "category": "Personal Care",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "bottle"
+  },
+  {
+    "id": 92,
+    "name": "Hand Wash (250ml)",
+    "category": "Personal Care",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "bottle"
+  },
+  {
+    "id": 93,
+    "name": "Shaving Cream (200g)",
+    "category": "Personal Care",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "tube"
+  },
+  {
+    "id": 94,
+    "name": "Razor (5 pieces)",
+    "category": "Personal Care",
+    "current_price": 135,
+    "historical_price_avg": 125,
+    "unit": "pack"
+  },
+  {
+    "id": 95,
+    "name": "Tissue Box",
+    "category": "Household",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "box"
+  },
+  {
+    "id": 96,
+    "name": "Paper Towels (2 rolls)",
+    "category": "Household",
+    "current_price": 145,
+    "historical_price_avg": 135,
+    "unit": "pack"
+  },
+  {
+    "id": 97,
+    "name": "Garbage Bags (30 pieces)",
+    "category": "Household",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 98,
+    "name": "Air Freshener (300ml)",
+    "category": "Household",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "can"
+  },
+  {
+    "id": 99,
+    "name": "Mosquito Repellent (45ml)",
+    "category": "Household",
+    "current_price": 115,
+    "historical_price_avg": 105,
+    "unit": "bottle"
+  },
+  {
+    "id": 100,
+    "name": "Candles (10 pieces)",
+    "category": "Household",
+    "current_price": 85,
+    "historical_price_avg": 78,
+    "unit": "pack"
+  },
+  {
+    "id": 101,
+    "name": "Aluminium Foil",
+    "category": "Household",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "roll"
+  },
+  {
+    "id": 102,
+    "name": "Cling Film",
+    "category": "Household",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "roll"
+  },
+  {
+    "id": 103,
+    "name": "Baking Paper",
+    "category": "Household",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 104,
+    "name": "Dishwashing Bar",
+    "category": "Household",
+    "current_price": 25,
+    "historical_price_avg": 22,
+    "unit": "piece"
+  },
+  {
+    "id": 105,
+    "name": "Fabric Softener (1L)",
+    "category": "Household",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "bottle"
+  },
+  {
+    "id": 106,
+    "name": "Glass Cleaner (500ml)",
+    "category": "Household",
+    "current_price": 115,
+    "historical_price_avg": 105,
+    "unit": "bottle"
+  },
+  {
+    "id": 107,
+    "name": "Furniture Polish (200ml)",
+    "category": "Household",
+    "current_price": 145,
+    "historical_price_avg": 135,
+    "unit": "bottle"
+  },
+  {
+    "id": 108,
+    "name": "Mango Pulp (850g)",
+    "category": "Groceries",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "can"
+  },
+  {
+    "id": 109,
+    "name": "Condensed Milk (400g)",
+    "category": "Dairy",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "can"
+  },
+  {
+    "id": 110,
+    "name": "Cream (250ml)",
+    "category": "Dairy",
+    "current_price": 135,
+    "historical_price_avg": 125,
+    "unit": "pack"
+  },
+  {
+    "id": 111,
+    "name": "Ghee (500ml)",
+    "category": "Dairy",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "jar"
+  },
+  {
+    "id": 112,
+    "name": "Coconut Oil (500ml)",
+    "category": "Groceries",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "bottle"
+  },
+  {
+    "id": 113,
+    "name": "Mustard Oil (1L)",
+    "category": "Groceries",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "bottle"
+  },
+  {
+    "id": 114,
+    "name": "Olive Oil (500ml)",
+    "category": "Groceries",
+    "current_price": 585,
+    "historical_price_avg": 530,
+    "unit": "bottle"
+  },
+  {
+    "id": 115,
+    "name": "Groundnut Oil (1L)",
+    "category": "Groceries",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "bottle"
+  },
+  {
+    "id": 116,
+    "name": "Vermicelli (400g)",
+    "category": "Groceries",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 117,
+    "name": "Oats (500g)",
+    "category": "Groceries",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 118,
+    "name": "Cornflakes (500g)",
+    "category": "Groceries",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "pack"
+  },
+  {
+    "id": 119,
+    "name": "Muesli (500g)",
+    "category": "Groceries",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "pack"
+  },
+  {
+    "id": 120,
+    "name": "Puffed Rice (200g)",
+    "category": "Groceries",
+    "current_price": 35,
+    "historical_price_avg": 32,
+    "unit": "pack"
+  },
+  {
+    "id": 121,
+    "name": "Soya Chunks (200g)",
+    "category": "Groceries",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 122,
+    "name": "Dry Coconut (200g)",
+    "category": "Groceries",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 123,
+    "name": "Dates (250g)",
+    "category": "Snacks",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "pack"
+  },
+  {
+    "id": 124,
+    "name": "Protein Powder (500g)",
+    "category": "Personal Care",
+    "current_price": 985,
+    "historical_price_avg": 900,
+    "unit": "jar"
+  },
+  {
+    "id": 125,
+    "name": "Orange Juice (1L)",
+    "category": "Beverages",
+    "current_price": 105,
+    "historical_price_avg": 95,
+    "unit": "pack"
+  },
+  {
+    "id": 126,
+    "name": "Apple Juice (1L)",
+    "category": "Beverages",
+    "current_price": 115,
+    "historical_price_avg": 105,
+    "unit": "pack"
+  },
+  {
+    "id": 127,
+    "name": "Mixed Fruit Jam (500g)",
+    "category": "Groceries",
+    "current_price": 175,
+    "historical_price_avg": 160,
+    "unit": "jar"
+  },
+  {
+    "id": 128,
+    "name": "Strawberry Jam (500g)",
+    "category": "Groceries",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "jar"
+  },
+  {
+    "id": 129,
+    "name": "Pizza Base",
+    "category": "Bakery",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "piece"
+  },
+  {
+    "id": 130,
+    "name": "Burger Buns (4 pcs)",
+    "category": "Bakery",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "pack"
+  },
+  {
+    "id": 131,
+    "name": "Pav (6 pcs)",
+    "category": "Bakery",
+    "current_price": 25,
+    "historical_price_avg": 22,
+    "unit": "pack"
+  },
+  {
+    "id": 132,
+    "name": "Brown Bread (400g)",
+    "category": "Bakery",
+    "current_price": 42,
+    "historical_price_avg": 38,
+    "unit": "loaf"
+  },
+  {
+    "id": 133,
+    "name": "Multigrain Bread (400g)",
+    "category": "Bakery",
+    "current_price": 55,
+    "historical_price_avg": 50,
+    "unit": "loaf"
+  },
+  {
+    "id": 134,
+    "name": "Cupcakes (4 pcs)",
+    "category": "Bakery",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 135,
+    "name": "Vanilla Cake (500g)",
+    "category": "Bakery",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "piece"
+  },
+  {
+    "id": 136,
+    "name": "Mangoes (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 185,
+    "historical_price_avg": 160,
+    "unit": "kg"
+  },
+  {
+    "id": 137,
+    "name": "Oranges (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 95,
+    "historical_price_avg": 85,
+    "unit": "kg"
+  },
+  {
+    "id": 138,
+    "name": "Grapes (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 139,
+    "name": "Watermelon (1 piece)",
+    "category": "Fruits & Vegetables",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "kg"
+  },
+  {
+    "id": 140,
+    "name": "Papaya (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "kg"
+  },
+  {
+    "id": 141,
+    "name": "Pineapple (1 piece)",
+    "category": "Fruits & Vegetables",
+    "current_price": 85,
+    "historical_price_avg": 75,
+    "unit": "piece"
+  },
+  {
+    "id": 142,
+    "name": "Pomegranate (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "kg"
+  },
+  {
+    "id": 143,
+    "name": "Carrots (1kg)",
+    "category": "Fruits & Vegetables",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "kg"
+  },
+  {
+    "id": 144,
+    "name": "Beans (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "pack"
+  },
+  {
+    "id": 145,
+    "name": "Cauliflower (1 piece)",
+    "category": "Fruits & Vegetables",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "piece"
+  },
+  {
+    "id": 146,
+    "name": "Cabbage (1 piece)",
+    "category": "Fruits & Vegetables",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "piece"
+  },
+  {
+    "id": 147,
+    "name": "Capsicum (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 75,
+    "historical_price_avg": 65,
+    "unit": "pack"
+  },
+  {
+    "id": 148,
+    "name": "Brinjal (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "pack"
+  },
+  {
+    "id": 149,
+    "name": "Cucumber (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "pack"
+  },
+  {
+    "id": 150,
+    "name": "Spinach (500g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 25,
+    "historical_price_avg": 22,
+    "unit": "bunch"
+  },
+  {
+    "id": 151,
+    "name": "Coriander Leaves (100g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 15,
+    "historical_price_avg": 12,
+    "unit": "bunch"
+  },
+  {
+    "id": 152,
+    "name": "Mint Leaves (100g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 15,
+    "historical_price_avg": 12,
+    "unit": "bunch"
+  },
+  {
+    "id": 153,
+    "name": "Green Chillies (100g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 25,
+    "historical_price_avg": 20,
+    "unit": "pack"
+  },
+  {
+    "id": 154,
+    "name": "Ginger (250g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "pack"
+  },
+  {
+    "id": 155,
+    "name": "Garlic (250g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 65,
+    "historical_price_avg": 55,
+    "unit": "pack"
+  },
+  {
+    "id": 156,
+    "name": "Lemon (250g)",
+    "category": "Fruits & Vegetables",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "pack"
+  },
+  {
+    "id": 157,
+    "name": "Mutton (1kg)",
+    "category": "Meat & Fish",
+    "current_price": 685,
+    "historical_price_avg": 620,
+    "unit": "kg"
+  },
+  {
+    "id": 158,
+    "name": "Prawns (500g)",
+    "category": "Meat & Fish",
+    "current_price": 485,
+    "historical_price_avg": 440,
+    "unit": "pack"
+  },
+  {
+    "id": 159,
+    "name": "Frozen Chicken Wings (500g)",
+    "category": "Frozen Foods",
+    "current_price": 195,
+    "historical_price_avg": 180,
+    "unit": "pack"
+  },
+  {
+    "id": 160,
+    "name": "Frozen French Fries (500g)",
+    "category": "Frozen Foods",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 161,
+    "name": "Frozen Corn (500g)",
+    "category": "Frozen Foods",
+    "current_price": 95,
+    "historical_price_avg": 88,
+    "unit": "pack"
+  },
+  {
+    "id": 162,
+    "name": "Frozen Mixed Vegetables (500g)",
+    "category": "Frozen Foods",
+    "current_price": 105,
+    "historical_price_avg": 95,
+    "unit": "pack"
+  },
+  {
+    "id": 163,
+    "name": "Ice Cream Cone",
+    "category": "Frozen Foods",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "piece"
+  },
+  {
+    "id": 164,
+    "name": "Kulfi (6 pcs)",
+    "category": "Frozen Foods",
+    "current_price": 95,
+    "historical_price_avg": 85,
+    "unit": "pack"
+  },
+  {
+    "id": 165,
+    "name": "Mango Ice Cream (1L)",
+    "category": "Frozen Foods",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "tub"
+  },
+  {
+    "id": 166,
+    "name": "Chocolate Ice Cream (1L)",
+    "category": "Frozen Foods",
+    "current_price": 295,
+    "historical_price_avg": 270,
+    "unit": "tub"
+  },
+  {
+    "id": 167,
+    "name": "Vanilla Ice Cream (1L)",
+    "category": "Frozen Foods",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "tub"
+  },
+  {
+    "id": 168,
+    "name": "Baby Diapers (M size, 40 pcs)",
+    "category": "Personal Care",
+    "current_price": 685,
+    "historical_price_avg": 620,
+    "unit": "pack"
+  },
+  {
+    "id": 169,
+    "name": "Baby Powder (200g)",
+    "category": "Personal Care",
+    "current_price": 145,
+    "historical_price_avg": 135,
+    "unit": "bottle"
+  },
+  {
+    "id": 170,
+    "name": "Baby Oil (200ml)",
+    "category": "Personal Care",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "bottle"
+  },
+  {
+    "id": 171,
+    "name": "Baby Soap (125g)",
+    "category": "Personal Care",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "piece"
+  },
+  {
+    "id": 172,
+    "name": "Wet Wipes (80 pcs)",
+    "category": "Personal Care",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 173,
+    "name": "Sanitary Pads (10 pcs)",
+    "category": "Personal Care",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "pack"
+  },
+  {
+    "id": 174,
+    "name": "Cotton Buds (100 pcs)",
+    "category": "Personal Care",
+    "current_price": 45,
+    "historical_price_avg": 40,
+    "unit": "pack"
+  },
+  {
+    "id": 175,
+    "name": "Cotton Balls (100g)",
+    "category": "Personal Care",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "pack"
+  },
+  {
+    "id": 176,
+    "name": "Band-Aid (20 pcs)",
+    "category": "Personal Care",
+    "current_price": 65,
+    "historical_price_avg": 58,
+    "unit": "pack"
+  },
+  {
+    "id": 177,
+    "name": "Antiseptic Cream (20g)",
+    "category": "Personal Care",
+    "current_price": 85,
+    "historical_price_avg": 75,
+    "unit": "tube"
+  },
+  {
+    "id": 178,
+    "name": "Nail Cutter",
+    "category": "Personal Care",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "piece"
+  },
+  {
+    "id": 179,
+    "name": "Hair Brush",
+    "category": "Personal Care",
+    "current_price": 95,
+    "historical_price_avg": 85,
+    "unit": "piece"
+  },
+  {
+    "id": 180,
+    "name": "Comb",
+    "category": "Personal Care",
+    "current_price": 25,
+    "historical_price_avg": 20,
+    "unit": "piece"
+  },
+  {
+    "id": 181,
+    "name": "Sponge (2 pcs)",
+    "category": "Household",
+    "current_price": 35,
+    "historical_price_avg": 30,
+    "unit": "pack"
+  },
+  {
+    "id": 182,
+    "name": "Scrubber (3 pcs)",
+    "category": "Household",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "pack"
+  },
+  {
+    "id": 183,
+    "name": "Mop Refill",
+    "category": "Household",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "piece"
+  },
+  {
+    "id": 184,
+    "name": "Broom",
+    "category": "Household",
+    "current_price": 85,
+    "historical_price_avg": 75,
+    "unit": "piece"
+  },
+  {
+    "id": 185,
+    "name": "Dustpan",
+    "category": "Household",
+    "current_price": 55,
+    "historical_price_avg": 48,
+    "unit": "piece"
+  },
+  {
+    "id": 186,
+    "name": "Bucket (20L)",
+    "category": "Household",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "piece"
+  },
+  {
+    "id": 187,
+    "name": "Mug",
+    "category": "Household",
+    "current_price": 45,
+    "historical_price_avg": 38,
+    "unit": "piece"
+  },
+  {
+    "id": 188,
+    "name": "Plastic Containers (3 pcs)",
+    "category": "Household",
+    "current_price": 165,
+    "historical_price_avg": 150,
+    "unit": "set"
+  },
+  {
+    "id": 189,
+    "name": "Water Bottle (1L)",
+    "category": "Household",
+    "current_price": 95,
+    "historical_price_avg": 85,
+    "unit": "piece"
+  },
+  {
+    "id": 190,
+    "name": "Lunch Box",
+    "category": "Household",
+    "current_price": 135,
+    "historical_price_avg": 125,
+    "unit": "piece"
+  },
+  {
+    "id": 191,
+    "name": "Steel Plates (6 pcs)",
+    "category": "Household",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "set"
+  },
+  {
+    "id": 192,
+    "name": "Steel Glasses (6 pcs)",
+    "category": "Household",
+    "current_price": 285,
+    "historical_price_avg": 260,
+    "unit": "set"
+  },
+  {
+    "id": 193,
+    "name": "Steel Bowls (6 pcs)",
+    "category": "Household",
+    "current_price": 325,
+    "historical_price_avg": 295,
+    "unit": "set"
+  },
+  {
+    "id": 194,
+    "name": "Spoons Set (12 pcs)",
+    "category": "Household",
+    "current_price": 185,
+    "historical_price_avg": 170,
+    "unit": "set"
+  },
+  {
+    "id": 195,
+    "name": "Kitchen Knife",
+    "category": "Household",
+    "current_price": 125,
+    "historical_price_avg": 115,
+    "unit": "piece"
+  },
+  {
+    "id": 196,
+    "name": "Chopping Board",
+    "category": "Household",
+    "current_price": 145,
+    "historical_price_avg": 135,
+    "unit": "piece"
+  },
+  {
+    "id": 197,
+    "name": "Pressure Cooker (3L)",
+    "category": "Household",
+    "current_price": 985,
+    "historical_price_avg": 900,
+    "unit": "piece"
+  },
+  {
+    "id": 198,
+    "name": "Non-Stick Pan",
+    "category": "Household",
+    "current_price": 485,
+    "historical_price_avg": 440,
+    "unit": "piece"
+  },
+  {
+    "id": 199,
+    "name": "Steel Kadai",
+    "category": "Household",
+    "current_price": 385,
+    "historical_price_avg": 350,
+    "unit": "piece"
+  },
+  {
+    "id": 200,
+    "name": "Mixer Grinder Jar",
+    "category": "Household",
+    "current_price": 585,
+    "historical_price_avg": 530,
+    "unit": "piece"
+  }
+]
