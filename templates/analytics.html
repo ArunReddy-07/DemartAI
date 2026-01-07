@@ -10,28 +10,28 @@
         <div class="container">
             <!-- Analytics Header -->
             <div class="analytics-container">
-                <h2 class="card-title" style="margin-bottom: 1rem;">📊 Real-Time Analytics Dashboard</h2>
+                <h2 class="card-title" style="margin-bottom: 1rem;">Real-Time Analytics Dashboard</h2>
                 <p style="color: #666; margin-bottom: 1.5rem;">Comprehensive insights into your inventory trends, user interactions, and system performance.</p>
                 
                 <!-- Key Metrics Grid -->
                 <div class="analytics-grid">
                     <div class="analytics-card">
-                        <h3>📦 Total Analyses</h3>
+                        <h3>Total Analyses</h3>
                         <div class="analytics-value" id="total-analyses">--</div>
                         <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Inventory analyses performed</p>
                     </div>
                     <div class="analytics-card">
-                        <h3>💬 Chatbot Interactions</h3>
+                        <h3>Chatbot Interactions</h3>
                         <div class="analytics-value" id="total-chats">--</div>
                         <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">User questions answered</p>
                     </div>
                     <div class="analytics-card">
-                        <h3>📈 AI Responses</h3>
+                        <h3>AI Responses</h3>
                         <div class="analytics-value" id="ai-responses">--</div>
                         <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Google Gemini API calls</p>
                     </div>
                     <div class="analytics-card">
-                        <h3>🎯 Top Product</h3>
+                        <h3>Top Product</h3>
                         <div class="analytics-value" id="top-product" style="font-size: 1.2rem;">--</div>
                         <p style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">Most analyzed</p>
                     </div>
@@ -40,83 +40,90 @@
 
             <!-- Product Analysis Graphs Section -->
             <div class="card" style="margin-bottom: 2rem;">
-                <h2 class="card-title">🎯 Top 5 Products Analysis</h2>
-                <p style="color: #666; margin-bottom: 1rem;">Detailed analysis of your 5 most analyzed products with visual comparisons.</p>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <div>
+                        <h2 class="card-title" style="margin:0;">Top Analyzed Products</h2>
+                        <p style="margin:4px 0 0 0;color:var(--muted);font-size:0.95rem;">Actionable insights and stock distribution for your most-analyzed items.</p>
+                    </div>
+                </div>
+                <h2 class="card-title">Top Analyzed Products</h2>
+                <p style="color: #666; margin-bottom: 1rem;">Visual summary of the five most frequently analyzed products.</p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem; margin-top: 0.5rem;">
                     <!-- Product Frequency Bar Chart -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">📊 Product Analysis Count</h3>
-                        <canvas id="productFrequencyChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Product Analysis Frequency</h3>
+                        <div style="height: 230px;">
+                            <canvas id="productFrequencyChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.productFrequencyChartData, 'Product Analysis Frequency', 'bar')">View full data & expand</button></div>
                     </div>
 
                     <!-- Product Category Pie Chart -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">🏷️ Product Categories</h3>
-                        <canvas id="productCategoryChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Category Distribution</h3>
+                        <div style="height: 230px;">
+                            <canvas id="productCategoryChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.productCategoryChartData, 'Product Category Distribution', 'doughnut')">View full data & expand</button></div>
                     </div>
 
                     <!-- Product Stock Distribution -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">📦 Average Stock Levels</h3>
-                        <canvas id="productStockChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Average Stock Levels (units)</h3>
+                        <div style="height: 230px;">
+                            <canvas id="productStockChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.productStockChartData, 'Average Stock Levels', 'radar')">View full data & expand</button></div>
                     </div>
 
                     <!-- Product Decision Distribution -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">⚡ Stock Recommendations</h3>
-                        <canvas id="productDecisionChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Recommendation Breakdown</h3>
+                        <div style="height: 230px;">
+                            <canvas id="productDecisionChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.productDecisionChartData, 'Recommendation Breakdown', 'bar')">View full data & expand</button></div>
                     </div>
                 </div>
 
-                <!-- Detailed Product Table -->
-                <div class="table-container" style="margin-top: 2rem;">
-                    <h3 style="margin-bottom: 1rem; color: #333;">📋 Detailed Product Metrics</h3>
-                    <table class="analytics-table">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Times Analyzed</th>
-                                <th>Avg Stock</th>
-                                <th>Avg Demand</th>
-                                <th>Top Decision</th>
-                            </tr>
-                        </thead>
-                        <tbody id="product-metrics-table">
-                            <tr>
-                                <td colspan="6" style="text-align: center; color: #999;">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-                <h2 class="card-title">📊 Detailed Analytics</h2>
+                <h2 class="card-title" style="margin-top: 1.5rem;">Detailed Analytics</h2>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem; margin-top: 0.6rem;">
                     <!-- Category Distribution -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">Category Distribution</h3>
-                        <canvas id="categoryChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Category Distribution (all products)</h3>
+                        <div style="height: 230px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.categoryChartData, 'Category Distribution', 'doughnut')">View full data & expand</button></div>
                     </div>
 
                     <!-- Season Distribution -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">Seasonal Analyses</h3>
-                        <canvas id="seasonChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Seasonal Analysis</h3>
+                        <div style="height: 230px;">
+                            <canvas id="seasonChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.seasonChartData, 'Seasonal Analysis', 'bar')">View full data & expand</button></div>
                     </div>
 
                     <!-- Decision Distribution -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">Stock Decisions</h3>
-                        <canvas id="decisionChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Decision Breakdown</h3>
+                        <div style="height: 230px;">
+                            <canvas id="decisionChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.decisionChartData, 'Decision Breakdown', 'pie')">View full data & expand</button></div>
                     </div>
 
                     <!-- Chat Sources -->
-                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                        <h3 style="margin-bottom: 1rem; color: #333;">Chatbot Sources</h3>
-                        <canvas id="sourcesChart"></canvas>
+                    <div class="chart-container" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 300px;">
+                        <h3 style="margin-bottom: 1rem; color: #333;">Chatbot Interaction Sources</h3>
+                        <div style="height: 230px;">
+                            <canvas id="sourcesChart"></canvas>
+                        </div>
+                        <div style="margin-top:8px; text-align: right;"><button class="btn-link" onclick="openChartModal(window.sourcesChartData, 'Chatbot Interaction Sources', 'radar')">View full data & expand</button></div>
                     </div>
                 </div>
             </div>
@@ -151,17 +158,35 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Season</th>
-                                <th>Stock</th>
-                                <th>Demand</th>
+                                <th>Current Stock</th>
+                                <th>Predicted Demand</th>
                                 <th>Decision</th>
+                                <th>Optimal Level</th>
+                                <th>Safety Stock</th>
+                                <th>Quantity Action</th>
+                                <th>Recommendation</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody id="recent-analyses-table">
                             <tr>
-                                <td colspan="6" style="text-align: center; color: #999;">Loading...</td>
+                                <td colspan="10" style="text-align: center; color: #999;">Loading...</td>
                             </tr>
                         </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Chart Modal -->
+        <div id="chartModal" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0.5); z-index:20000; align-items:center; justify-content:center; padding: 30px;">
+            <div style="background:white; border-radius:10px; max-width:1100px; width:100%; max-height:90vh; overflow:auto; padding:20px; position:relative;">
+                <button onclick="closeChartModal()" style="position:absolute; right:12px; top:12px; border:none; background:#eee; padding:6px 10px; border-radius:6px; cursor:pointer;">Close</button>
+                <h3 id="chartModalTitle" style="margin-top:0;">Chart Details</h3>
+                <div style="height:480px;">
+                    <canvas id="chartModalCanvas"></canvas>
+                </div>
+                <div style="margin-top:12px; overflow:auto; max-height:220px;">
+                    <table id="chartModalData" style="width:100%; border-collapse:collapse;">
                     </table>
                 </div>
             </div>
@@ -222,20 +247,23 @@
                             '#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe',
                             '#43e97b', '#fa709a', '#fee140', '#30cfd0'
                         ],
-                        borderWidth: 0
+                        borderWidth: 2,
+                        borderColor: '#fff'
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             position: 'bottom',
-                            labels: { padding: 15, font: { size: 12 } }
+                            labels: { padding: 12, font: { size: 11 }, usePointStyle: true }
                         }
                     }
                 }
             });
+            // expose data for modal
+            window.categoryChartData = { labels: Object.keys(data.categories || {}), datasets: [{ label: 'Count', data: Object.values(data.categories || {}) }] };
 
             // Season Distribution
             const seasonCtx = document.getElementById('seasonChart').getContext('2d');
@@ -245,24 +273,30 @@
                 data: {
                     labels: Object.keys(data.seasons || {}),
                     datasets: [{
-                        label: 'Analyses',
+                        label: 'Analysis Count',
                         data: Object.values(data.seasons || {}),
                         backgroundColor: 'rgba(102, 126, 234, 0.8)',
                         borderColor: '#667eea',
-                        borderWidth: 1,
-                        borderRadius: 5
+                        borderWidth: 0,
+                        borderRadius: 6,
+                        barThickness: 'flex',
+                        maxBarThickness: 40
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: { bodyFont: { size: 11 }, titleFont: { size: 12 } }
                     },
                     scales: {
-                        y: { beginAtZero: true }
+                        y: { beginAtZero: true, ticks: { color: '#333', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                        x: { ticks: { color: '#333', font: { size: 11 } }, grid: { display: false } }
                     }
                 }
             });
+            window.seasonChartData = { labels: Object.keys(data.seasons || {}), datasets: [{ label: 'Analysis Count', data: Object.values(data.seasons || {}) }] };
 
             // Decision Distribution
             const decisionCtx = document.getElementById('decisionChart').getContext('2d');
@@ -274,16 +308,20 @@
                     datasets: [{
                         data: Object.values(data.decisions || {}),
                         backgroundColor: ['#EF476F', '#06D6A0', '#FFD23F'],
-                        borderWidth: 0
+                        borderWidth: 2,
+                        borderColor: '#fff'
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom' }
+                        legend: { position: 'bottom', labels: { font: { size: 10 }, padding: 8, usePointStyle: true } },
+                        tooltip: { bodyFont: { size: 10 } }
                     }
                 }
             });
+            window.decisionChartData = { labels: Object.keys(data.decisions || {}), datasets: [{ label: 'Count', data: Object.values(data.decisions || {}) }] };
 
             // Chat Sources
             const sourcesCtx = document.getElementById('sourcesChart').getContext('2d');
@@ -303,13 +341,17 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         r: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            pointLabels: { font: { size: 10 } }
                         }
-                    }
+                    },
+                    plugins: { tooltip: { bodyFont: { size: 10 } } }
                 }
             });
+            window.sourcesChartData = { labels: Object.keys(data.chat_sources || {}), datasets: [{ label: 'Interactions', data: Object.values(data.chat_sources || {}) }] };
         }
 
         function updateTopProducts(products) {
@@ -331,22 +373,42 @@
         function updateRecentAnalyses(analyses) {
             const tbody = document.getElementById('recent-analyses-table');
             if (!analyses || analyses.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #999;">No data yet</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; color: #999;">No data yet</td></tr>';
                 return;
             }
 
             tbody.innerHTML = analyses.map(a => {
                 const statusClass = a.decision?.includes('ADD') ? 'status-add' : 
                                    a.decision?.includes('REDUCE') ? 'status-reduce' : 'status-maintain';
+                const statusColor = a.decision?.includes('ADD') ? '#EF476F' : 
+                                   a.decision?.includes('REDUCE') ? '#F77F00' : '#06D6A0';
+                
                 const date = new Date(a.created_at).toLocaleDateString();
+                
+                // Get quantity action
+                let quantityAction = '';
+                if (a.decision?.includes('ADD')) {
+                    const addQty = a.optimal_level - a.current_stock;
+                    quantityAction = `<strong style="color: #EF476F;">+${addQty}</strong> units`;
+                } else if (a.decision?.includes('REDUCE')) {
+                    const reduceQty = a.current_stock - a.optimal_level;
+                    quantityAction = `<strong style="color: #F77F00;">-${reduceQty}</strong> units`;
+                } else {
+                    quantityAction = `<strong style="color: #06D6A0;">${a.current_stock}</strong> units`;
+                }
+                
                 return `
                     <tr>
-                        <td>${a.product_name}</td>
-                        <td>${a.season}</td>
-                        <td>${a.current_stock}</td>
-                        <td>${a.predicted_demand}</td>
-                        <td><span class="status-badge ${statusClass}">${a.decision}</span></td>
-                        <td>${date}</td>
+                        <td><strong>${a.product_name}</strong></td>
+                        <td><span style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 0.25rem 0.5rem; border-radius: 4px;">${a.season}</span></td>
+                        <td><strong>${a.current_stock}</strong></td>
+                        <td><strong style="color: ${statusColor};">${a.predicted_demand}</strong></td>
+                        <td><span style="background: ${statusColor}15; color: ${statusColor}; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600;">${a.decision}</span></td>
+                        <td><strong>${a.optimal_level || 'N/A'}</strong></td>
+                        <td><strong>${a.safety_stock || 'N/A'}</strong></td>
+                        <td>${quantityAction}</td>
+                        <td><small>${a.recommendation || 'Monitor'}</small></td>
+                        <td><small>${date}</small></td>
                     </tr>
                 `;
             }).join('');
@@ -379,7 +441,11 @@
                     category: fullName.includes('(') ? fullName.split('(')[1].replace(')', '') : 'Unknown',
                     stocks: [],
                     demands: [],
-                    decisions: {}
+                    decisions: {},
+                    optimal_levels: [],
+                    safety_levels: [],
+                    advices: [],
+                    last_analyzed: null
                 };
             });
 
@@ -387,13 +453,25 @@
             if (allAnalyses && allAnalyses.length > 0) {
                 allAnalyses.forEach(a => {
                     const key = Object.keys(productMetrics).find(k => k.includes(a.product_name));
-                    if (key && productMetrics[key]) {
-                        productMetrics[key].stocks.push(parseInt(a.current_stock) || 0);
-                        productMetrics[key].demands.push(parseInt(a.predicted_demand) || 0);
-                        
-                        const decision = a.decision || 'MAINTAIN';
-                        productMetrics[key].decisions[decision] = (productMetrics[key].decisions[decision] || 0) + 1;
-                    }
+                        if (key && productMetrics[key]) {
+                            productMetrics[key].stocks.push(parseInt(a.current_stock) || 0);
+                            productMetrics[key].demands.push(parseInt(a.predicted_demand) || 0);
+                            // store optimal level and advice if present
+                            if (a.optimal_level !== null && a.optimal_level !== undefined) productMetrics[key].optimal_levels.push(parseInt(a.optimal_level));
+                            if (a.recommendation) productMetrics[key].advices.push((a.recommendation || '').toString());
+                            // safety stock estimate if stored in metadata/advice (best-effort)
+                            if (a.safety_stock !== null && a.safety_stock !== undefined) productMetrics[key].safety_levels.push(parseInt(a.safety_stock));
+                            // decision tally
+                            const decision = a.decision || 'MAINTAIN';
+                            productMetrics[key].decisions[decision] = (productMetrics[key].decisions[decision] || 0) + 1;
+                            // last analyzed timestamp
+                            try {
+                                const d = new Date(a.created_at);
+                                if (!productMetrics[key].last_analyzed || d > new Date(productMetrics[key].last_analyzed)) {
+                                    productMetrics[key].last_analyzed = a.created_at;
+                                }
+                            } catch (e) {}
+                        }
                 });
             }
 
@@ -425,38 +503,45 @@
                 });
             });
 
-            // Product Frequency Chart
+            // Product Frequency Chart (Top 5)
             const freqCtx = document.getElementById('productFrequencyChart').getContext('2d');
             if (productFrequencyChart) productFrequencyChart.destroy();
+            const freqColors = ['#2b6cb0','#2c7a7b','#b7791f','#9f7aea','#dd6b20'];
             productFrequencyChart = new Chart(freqCtx, {
                 type: 'bar',
                 data: {
                     labels: productNames,
                     datasets: [{
-                        label: 'Times Analyzed',
+                        label: 'Analysis Count',
                         data: productCounts,
-                        backgroundColor: [
-                            'rgba(102, 126, 234, 0.9)',
-                            'rgba(118, 75, 162, 0.9)',
-                            'rgba(240, 147, 251, 0.9)',
-                            'rgba(79, 172, 254, 0.9)',
-                            'rgba(0, 242, 254, 0.9)'
-                        ],
-                        borderRadius: 8,
-                        borderWidth: 0
+                        backgroundColor: productNames.map((_,i) => freqColors[i % freqColors.length]),
+                        borderRadius: 6,
+                        barThickness: 'flex',
+                        maxBarThickness: 30,
+                        borderWidth: 0,
+                        categoryPercentage: 0.8,
+                        barPercentage: 0.85
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     indexAxis: 'y',
                     plugins: {
-                        legend: { display: false }
+                        legend: { display: false },
+                        tooltip: { bodyFont: { size: 11 }, callbacks: { label: ctx => `${ctx.parsed.x} analyses` } }
                     },
                     scales: {
-                        x: { beginAtZero: true }
+                        x: { beginAtZero: true, ticks: { color: '#333', font: { size: 11 } } },
+                        y: { 
+                            ticks: { color: '#333', font: { size: 11 } },
+                            grid: { display: false }
+                        }
                     }
                 }
             });
+            // expose data for modal
+            window.productFrequencyChartData = { labels: productNames, datasets: [{ label: 'Analysis Count', data: productCounts, backgroundColor: productNames.map((_,i) => freqColors[i % freqColors.length]) }] };
 
             // Product Category Pie Chart
             const categoryMap = {};
@@ -475,19 +560,23 @@
                             '#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe',
                             '#43e97b', '#fa709a', '#fee140'
                         ],
-                        borderWidth: 0
+                        borderWidth: 2,
+                        borderColor: '#fff'
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             position: 'bottom',
-                            labels: { padding: 15, font: { size: 11 } }
-                        }
+                            labels: { padding: 8, font: { size: 10 }, usePointStyle: true }
+                        },
+                        tooltip: { bodyFont: { size: 10 }, padding: 8 }
                     }
                 }
             });
+            window.productCategoryChartData = { labels: Object.keys(categoryMap), datasets: [{ label: 'Count', data: Object.values(categoryMap) }] };
 
             // Product Stock Distribution Chart
             const stockCtx = document.getElementById('productStockChart').getContext('2d');
@@ -497,7 +586,7 @@
                 data: {
                     labels: productNames,
                     datasets: [{
-                        label: 'Avg Stock Level',
+                        label: 'Average Stock Level (units)',
                         data: productAvgStocks,
                         borderColor: '#667eea',
                         backgroundColor: 'rgba(102, 126, 234, 0.15)',
@@ -509,14 +598,14 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: true,
                     scales: {
-                        r: { beginAtZero: true, max: Math.max(...productAvgStocks, 100) }
+                        r: { beginAtZero: true, max: Math.max(...productAvgStocks, 100), pointLabels: { font: { size: 11 } } }
                     },
-                    plugins: {
-                        legend: { display: true }
-                    }
+                    plugins: { legend: { display: true, labels: { font: { size: 11 } } }, tooltip: { bodyFont: { size: 11 } } }
                 }
             });
+            window.productStockChartData = { labels: productNames, datasets: [{ label: 'Average Stock Level (units)', data: productAvgStocks }] };
 
             // Product Decision Distribution Chart
             const decisionCtx = document.getElementById('productDecisionChart').getContext('2d');
@@ -534,21 +623,21 @@
                             if (label.includes('REDUCE')) return '#EF476F';
                             return '#FFD23F';
                         },
-                        borderRadius: 8,
-                        borderWidth: 0
+                        borderRadius: 6,
+                        borderWidth: 0,
+                        barThickness: 'flex',
+                        maxBarThickness: 50
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: true,
                     indexAxis: 'x',
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
+                    plugins: { legend: { display: false }, tooltip: { bodyFont: { size: 11 } } },
+                    scales: { y: { beginAtZero: true, ticks: { font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } }, x: { ticks: { font: { size: 11 } }, grid: { display: false } } }
                 }
             });
+            window.productDecisionChartData = { labels: Object.keys(decisionData), datasets: [{ label: 'Recommendation Count', data: Object.values(decisionData) }] };
 
             // Update detailed metrics table
             updateProductMetricsTable(top5Products, productMetrics);
@@ -574,11 +663,17 @@
                     ? Math.round(metrics.demands.reduce((a, b) => a + b, 0) / metrics.demands.length)
                     : 0;
                 
-                const topDecision = Object.keys(metrics.decisions).reduce((a, b) => 
-                    metrics.decisions[a] > metrics.decisions[b] ? a : b, 'MAINTAIN');
+                const topDecision = Object.keys(metrics.decisions).length ? Object.keys(metrics.decisions).reduce((a, b) => 
+                    metrics.decisions[a] > metrics.decisions[b] ? a : b) : 'MAINTAIN';
                 
                 const decisionClass = topDecision.includes('ADD') ? 'status-add' :
                                      topDecision.includes('REDUCE') ? 'status-reduce' : 'status-maintain';
+
+                // derive optimal and safety stock averages if available
+                const optimal = metrics.optimal_levels.length > 0 ? Math.round(metrics.optimal_levels.reduce((a,b)=>a+b,0)/metrics.optimal_levels.length) : '—';
+                const safety = metrics.safety_levels.length > 0 ? Math.round(metrics.safety_levels.reduce((a,b)=>a+b,0)/metrics.safety_levels.length) : '—';
+                const lastAnalyzed = metrics.last_analyzed ? (new Date(metrics.last_analyzed)).toLocaleString() : '—';
+                const recommendationShort = metrics.advices.length > 0 ? metrics.advices[0].substring(0,80) + (metrics.advices[0].length>80?'...':'') : '—';
 
                 return `
                     <tr>
@@ -588,9 +683,53 @@
                         <td>${avgStock} units</td>
                         <td>${avgDemand} units</td>
                         <td><span class="status-badge ${decisionClass}">${topDecision}</span></td>
+                        <td>${optimal}</td>
+                        <td>${safety}</td>
+                        <td>${lastAnalyzed}</td>
+                        <td style="max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${recommendationShort}</td>
                     </tr>
                 `;
             }).join('');
+        }
+
+        // Modal for expanded chart view + data table
+        let modalChart = null;
+        function openChartModal(chartData, title = 'Chart', type = 'bar') {
+            if (!chartData || !chartData.labels) return;
+            const modal = document.getElementById('chartModal');
+            const modalTitle = document.getElementById('chartModalTitle');
+            const modalCanvas = document.getElementById('chartModalCanvas').getContext('2d');
+            const modalTable = document.getElementById('chartModalData');
+
+            modalTitle.textContent = title;
+
+            // Render table
+            modalTable.innerHTML = '';
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = '<th>Label</th>' + chartData.datasets.map(ds => `<th>${ds.label}</th>`).join('');
+            modalTable.appendChild(headerRow);
+
+            chartData.labels.forEach((lbl, i) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${lbl}</td>` + chartData.datasets.map(ds => `<td>${ds.data[i] ?? '-'}</td>`).join('');
+                modalTable.appendChild(row);
+            });
+
+            // Render large chart
+            if (modalChart) { try { modalChart.destroy(); } catch(e){} }
+            modalChart = new Chart(modalCanvas, {
+                type: type,
+                data: chartData,
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+            });
+
+            modal.style.display = 'block';
+        }
+
+        function closeChartModal(){
+            const modal = document.getElementById('chartModal');
+            modal.style.display = 'none';
+            if (modalChart) { try { modalChart.destroy(); modalChart = null; } catch(e){} }
         }
 
     </script>
