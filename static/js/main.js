@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadProducts();
     await loadDashboardStats();
     setupEventListeners();
+    // Load saved analyses from localStorage so stats persist across refresh
+    try {
+        const saved = localStorage.getItem('inventoryData');
+        inventory = saved ? JSON.parse(saved) : [];
+    } catch (e) {
+        inventory = [];
+    }
+    updateTable();
+    updateStats();
     updateQuickInsights();
 });
 
@@ -77,22 +86,31 @@ async function handleFormSubmit(e) {
             })
         });
         
+        if (!response.ok) {
+            const error = await response.json();
+            showNotification(error.error || 'Failed to analyze product', 'error');
+            return;
+        }
+        
         const result = await response.json();
         
-        if (response.ok) {
+        if (result && result.product) {
             inventory.push(result);
+            // persist analyses locally so dashboard stays in sync after reload
+            try { localStorage.setItem('inventoryData', JSON.stringify(inventory)); } catch(e) {}
             updateTable();
             updateStats();
-            showNotification('Analysis completed successfully!', 'success');
+            updateQuickInsights();
+            showNotification('✓ Analysis completed successfully!', 'success');
             
             // Reset form
             document.getElementById('stock').value = '';
         } else {
-            showNotification(result.error || 'An error occurred', 'error');
+            showNotification('Unexpected response format', 'error');
         }
     } catch (error) {
         console.error('Error:', error);
-        showNotification('Failed to analyze product', 'error');
+        showNotification('Network error. Please check your connection.', 'error');
     } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
@@ -121,6 +139,18 @@ function updateTable() {
         const priorityColor = priority === 'high' ? '#EF476F' : 
                              priority === 'medium' ? '#F77F00' : '#06D6A0';
         
+        // Get quantity action
+        const quantityAction = item.recommendation?.quantity_action || 0;
+        let maintainText = '';
+        
+        if (item.recommendation?.decision?.includes('ADD')) {
+            maintainText = `<strong style="color: #EF476F;">+${quantityAction}</strong> units`;
+        } else if (item.recommendation?.decision?.includes('REDUCE')) {
+            maintainText = `<strong style="color: #F77F00;">-${quantityAction}</strong> units`;
+        } else {
+            maintainText = `<strong style="color: #06D6A0;">${quantityAction}</strong> units`;
+        }
+        
         return `
             <tr style="animation: slideIn 0.5s ease ${index * 0.1}s both;">
                 <td><strong>${item.product}</strong><br><small>${item.category}</small></td>
@@ -129,7 +159,7 @@ function updateTable() {
                 <td><strong style="color: ${priorityColor};">${item.predicted_demand}</strong></td>
                 <td><span style="font-weight: 600; color: ${priorityColor};">${item.recommendation.decision}</span></td>
                 <td><strong>₹${item.price}</strong><br><small style="color: #666;">Unit: ${item.unit}</small></td>
-                <td><span style="font-size: 0.8rem; padding: 0.25rem 0.5rem; background: ${priorityColor}15; color: ${priorityColor}; border-radius: 6px; display: inline-block;">${item.recommendation.advice.substring(0, 20)}...</span></td>
+                <td><span style="font-size: 0.85rem; padding: 0.4rem 0.7rem; background: ${priorityColor}15; color: ${priorityColor}; border-radius: 6px; display: inline-block; font-weight: 600;">${maintainText}</span></td>
             </tr>
         `;
     }).join('');
@@ -137,11 +167,25 @@ function updateTable() {
 
 // Update statistics
 function updateStats() {
-    const lowStockItems = inventory.filter(item => item.decision.includes('ADD')).length;
-    const highDemandItems = inventory.filter(item => item.season !== 'Regular').length;
+    // Count low stock alerts (items that need ADD STOCK - current stock is below reorder point)
+    const lowStockItems = inventory.filter(item => {
+        return item.recommendation && 
+               item.recommendation.decision && 
+               item.recommendation.decision === 'ADD STOCK';
+    }).length;
     
+    // Count high demand items (non-regular seasons OR predicted demand exceeds current stock significantly)
+    const highDemandItems = inventory.filter(item => {
+        const isHighSeason = item.season !== 'Regular';
+        const hasHighDemand = item.predicted_demand > item.current_stock;
+        return isHighSeason || hasHighDemand;
+    }).length;
+    
+    // Update dashboard stats
     document.getElementById('lowStock').textContent = lowStockItems;
     document.getElementById('highDemand').textContent = highDemandItems;
+    
+    console.log(`📊 Stats Updated - Low Stock Alerts: ${lowStockItems}, High Demand Items: ${highDemandItems}`);
 }
 
 // Update quick insights
@@ -157,14 +201,27 @@ function updateQuickInsights() {
     const product = productsData.find(p => p.name === productName);
     if (!product) return;
     
+    // Base product info
     const insights = [
-        `📦 Category: ${product.category}`,
-        `💰 Current Price: ₹${product.current_price} per ${product.unit}`,
-        `📊 10-Year Avg: ₹${product.historical_price_avg}`,
-        `📈 Price Trend: ${product.current_price > product.historical_price_avg ? 'Increasing ↑' : 'Stable →'}`
+        `Category: ${product.category}`,
+        `Current Price: ₹${product.current_price} per ${product.unit}`,
+        `Historical Avg Price: ₹${product.historical_price_avg}`,
+        `Price Trend: ${product.current_price > product.historical_price_avg ? 'Increasing' : 'Stable'}`
     ];
+
+    // If we have a recent analysis for this product, show it
+    const lastAnalysis = inventory.slice().reverse().find(i => i.product === productName);
+    if (lastAnalysis) {
+        insights.push(`Predicted Demand: ${lastAnalysis.predicted_demand} units`);
+        insights.push(`Last Decision: ${lastAnalysis.recommendation?.decision || 'N/A'}`);
+        const qty = lastAnalysis.recommendation?.quantity_action ?? 0;
+        const qtyText = lastAnalysis.recommendation?.decision === 'ADD STOCK' ? `+${qty}` : lastAnalysis.recommendation?.decision === 'REDUCE STOCK' ? `-${qty}` : `${qty}`;
+        insights.push(`Quantity Action: ${qtyText} units`);
+    } else {
+        insights.push('No recent analysis for this product');
+    }
     
-    insightsContainer.innerHTML = insights.map(insight => 
+    insightsContainer.innerHTML = insights.map(insight =>
         `<p class="insight-item">${insight}</p>`
     ).join('');
 }
