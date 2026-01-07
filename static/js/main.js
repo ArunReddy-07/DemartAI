@@ -37,7 +37,8 @@ async function loadDashboardStats() {
         const response = await fetch('/api/dashboard-stats');
         const stats = await response.json();
         
-        document.getElementById('totalProducts').textContent = stats.total_products;
+        // Show number with label 'products'
+        document.getElementById('totalProducts').textContent = `${stats.total_products} products`;
         // `avg_price` already contains currency formatting from backend
         document.getElementById('avgPrice').textContent = stats.avg_price;
     } catch (error) {
