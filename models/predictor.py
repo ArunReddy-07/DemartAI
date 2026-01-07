@@ -84,8 +84,8 @@ class InventoryPredictor:
         # Get seasonal multiplier
         seasonal_multiplier = self.seasonal_patterns.get(season, {}).get(category, 1.0)
         
-        # Calculate base demand (default 100 units)
-        base_demand = 100
+        # Calculate realistic base demand based on category
+        base_demand = self._get_category_base_demand(category)
         predicted_demand = int(base_demand * seasonal_multiplier)
         
         # Generate recommendation
@@ -102,6 +102,22 @@ class InventoryPredictor:
             'price': product.get('current_price', 0),
             'unit': product.get('unit', 'pack')
         }
+    
+    def _get_category_base_demand(self, category):
+        """Get realistic base demand for product category"""
+        category_demands = {
+            "Groceries": 150,
+            "Dairy": 200,
+            "Beverages": 180,
+            "Fruits": 120,
+            "Vegetables": 140,
+            "Personal Care": 90,
+            "Snacks": 160,
+            "Frozen": 80,
+            "Condiments": 70,
+            "Miscellaneous": 100
+        }
+        return category_demands.get(category, 100)
     
     def _get_default_prediction(self, product_name, current_stock, season):
         """Get default prediction for unknown products"""
@@ -134,26 +150,35 @@ class InventoryPredictor:
         reorder_point = predicted_demand
         optimal_stock = predicted_demand + safety_stock
         
+        # Calculate required stock based on demand and availability
+        required_stock = optimal_stock
+        stock_gap = max(0, required_stock - current_stock)
+        
         decision = "MAINTAIN"
+        quantity_action = 0
         advice = ""
         
         if current_stock < reorder_point:
             decision = "ADD STOCK"
-            required = optimal_stock - current_stock
-            advice = f"Add {required} units to reach optimal level of {optimal_stock} units"
+            quantity_action = optimal_stock - current_stock
+            advice = f"Add {quantity_action} units"
         elif current_stock > optimal_stock * 1.5:
             decision = "REDUCE STOCK"
-            excess = current_stock - optimal_stock
-            advice = f"Reduce stock by {excess} units. Current level exceeds seasonal demand."
+            quantity_action = current_stock - optimal_stock
+            advice = f"Reduce by {quantity_action} units"
         else:
-            advice = f"Current stock level is optimal for {season} season. Monitor demand closely."
+            quantity_action = current_stock  # Maintain current level
+            advice = f"Maintain {current_stock} units"
         
         return {
             'decision': decision,
             'advice': advice,
+            'quantity_action': quantity_action,
             'optimal_level': optimal_stock,
             'reorder_point': reorder_point,
-            'safety_stock': safety_stock
+            'safety_stock': safety_stock,
+            'required_stock': required_stock,
+            'stock_gap': stock_gap
         }
     
     def get_category_insights(self):
