@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - D-Mart{% endblock %}
+
+{% block content %}
+<div class="container" style="padding:4rem 0;">
+    <div style="max-width:480px;margin:0 auto;">
+        <div class="card">
+            <h2>Create an account</h2>
+            <p style="color:var(--muted);">Register to manage inventory and stock movements.</p>
+
+            <form id="signupForm" style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem;">
+                <input id="su-username" placeholder="Username" required style="padding:0.75rem;border-radius:8px;border:1px solid #e6eefb;">
+                <input id="su-email" type="email" placeholder="Email" required style="padding:0.75rem;border-radius:8px;border:1px solid #e6eefb;">
+                <input id="su-password" type="password" placeholder="Password" required style="padding:0.75rem;border-radius:8px;border:1px solid #e6eefb;">
+                <button class="btn-primary" type="submit">Create account</button>
+            </form>
+
+            <p style="margin-top:12px;color:var(--muted);">Already have an account? <a href="/login">Sign in</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('su-username').value.trim();
+    const email = document.getElementById('su-email').value.trim();
+    const password = document.getElementById('su-password').value;
+
+    if (!username || !email || !password) return alert('Fill all fields');
+
+    try {
+        const res = await fetch('/api/signup', {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({username,email,password})
+        });
+        const data = await res.json();
+        if (res.ok) {
+            alert('Account created. You can now sign in.');
+            window.location.href = '/login';
+        } else {
+            alert(data.error || 'Failed to create account');
+        }
+    } catch (err) { console.error(err); alert('Error'); }
+});
+</script>
+
+{% endblock %}
