@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}D-Mart Smart Inventory System{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.svg') }}" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     {% block extra_css %}{% endblock %}
 </head>
@@ -14,60 +15,87 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <h1>🛒 D-Mart AI</h1>
-                    <p>Smart Inventory Management</p>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <a href="/" class="brand-link-header">
+                        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="D-Mart" style="height:40px;">
+                    </a>
+                    <div style="line-height:1;">
+                        <div style="font-weight:700;color:var(--dark);">D-Mart Inventory Pro</div>
+                        <small style="color:var(--muted);font-size:0.85rem;">Smart inventory, optimized stock movements</small>
+                    </div>
                 </div>
-                <div class="header-actions">
-                    <!-- reserved for user info / quick actions -->
+                <div class="header-actions" style="display:flex;align-items:center;gap:12px;">
+                    <div class="header-search">
+                        <input id="globalSearch" placeholder="Search products, categories...">
+                    </div>
+                    <button class="icon-btn" title="Notifications">🔔<span class="notif-badge" id="notifCount">3</span></button>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <img src="{{ url_for('static', filename='images/avatar-placeholder.svg') }}" class="user-avatar" style="width:36px;height:36px;">
+                        <div style="font-size:0.9rem;color:var(--muted);">{{ session.get('username', 'Manager') }}</div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-
     <!-- Professional Navigation Bar -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="nav-brand">
-                    <span class="nav-title">📊 D-Mart Inventory Pro</span>
+                <div class="nav-left">
+                    <div class="nav-brand">
+                        <a href="/" class="brand-link">
+                            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="D-Mart" style="height:28px;">
+                        </a>
+                        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                            <span class="nav-icon">📈</span> Dashboard
+                        </a></li>
+                        <li><a href="/analytics" class="nav-link {% if request.path == '/analytics' %}active{% endif %}">
+                            <span class="nav-icon">📊</span> Analytics
+                        </a></li>
+                        <li><a href="/settings" class="nav-link {% if request.path == '/settings' %}active{% endif %}">
+                            <span class="nav-icon">⚙️</span> Settings
+                        </a></li>
+                        <li class="user-menu">
+                            <a href="#" class="nav-link user-link" id="userLink">
+                                <span class="user-avatar">{{ session.get('username', 'U')[0]|upper }}</span>
+                                <span class="user-name">{{ session.get('username', 'User') }}</span>
+                            </a>
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="/settings">Settings</a>
+                                <a href="/profile">Profile</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="search-btn">🔍</button>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
-                        <span class="nav-icon">📈</span> Dashboard
-                    </a></li>
-                    <li><a href="/analytics" class="nav-link {% if request.path == '/analytics' %}active{% endif %}">
-                        <span class="nav-icon">📊</span> Analytics
-                    </a></li>
-                    <li><a href="/settings" class="nav-link {% if request.path == '/settings' %}active{% endif %}">
-                        <span class="nav-icon">⚙️</span> Settings
-                    </a></li>
-                    <li><a href="/logout" class="nav-link logout-link">
-                        <span class="nav-icon">🚪</span> Logout
-                    </a></li>
-                </ul>
-                <div class="nav-stats">
-                    <span class="nav-stat-item" id="nav-stat-products">📦 Products</span>
-                    <span class="nav-stat-item" id="nav-stat-analyses">📈 Analyses</span>
+                <div class="nav-right">
+                    <div class="nav-stats">
+                        <span class="nav-stat-item" id="nav-stat-products">📦 0</span>
+                        <span class="nav-stat-item" id="nav-stat-analyses">📈 0</span>
+                    </div>
+                    <div class="nav-user">
+                        <img src="{{ url_for('static', filename='images/avatar-placeholder.svg') }}" alt="User" class="user-avatar">
+                        <a href="/logout" class="btn-logout">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
-
     <!-- Main Content -->
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
-
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2026 D-Mart Smart Inventory Management System. Powered by AI.</p>
         </div>
     </footer>
-
     {% block extra_js %}{% endblock %}
-    
     <script>
         // Update navigation stats
         async function updateNavStats() {
@@ -80,6 +108,16 @@
                 console.error('Error updating nav stats:', error);
             }
         }
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('navToggle');
+            const menu = document.getElementById('navMenu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('open');
+                });
+            }
+        });
         
         // Update stats on page load
         document.addEventListener('DOMContentLoaded', updateNavStats);
@@ -94,10 +132,36 @@
                     mainContent.style.paddingTop = `${headerHeight + navbarHeight}px`;
                 }
             }
-
             // Adjust padding on load and on resize
             document.addEventListener('DOMContentLoaded', adjustMainContentPadding);
             window.addEventListener('resize', adjustMainContentPadding);
+            // Navbar/mobile toggle & user dropdown handlers
+            (function() {
+                const navToggle = document.getElementById('navToggle');
+                const navMenu = document.getElementById('navMenu');
+                const userLink = document.getElementById('userLink');
+                const userDropdown = document.getElementById('userDropdown');
+
+                if (navToggle && navMenu) {
+                    navToggle.addEventListener('click', () => {
+                        navMenu.classList.toggle('open');
+                    });
+                }
+
+                if (userLink && userDropdown) {
+                    userLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        userDropdown.classList.toggle('open');
+                    });
+
+                    // Close when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!userLink.contains(e.target) && !userDropdown.contains(e.target)) {
+                            userDropdown.classList.remove('open');
+                        }
+                    });
+                }
+            })();
     </script>
 </body>
 </html>
